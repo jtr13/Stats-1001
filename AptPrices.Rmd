@@ -1,0 +1,81 @@
+---
+title: "Apartment Prices"
+author: "Joyce Robbins"
+date: "September 13, 2016"
+---
+Data source: www.cityrealty.com September 13, 2016  
+Filters: Morningside heights, one bedroom, sales  
+Full dataset stored in aptprices.csv  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r hist1}
+prices <- c(379, 425, 450, 450, 499, 529, 535, 535, 545, 599, 665, 675, 699, 699, 725, 725, 745, 799)
+b <- seq(300,900,100)
+hist(prices, col = "lightblue", las = 1, 
+     xlab = "price (in 1000s of $)", 
+     ylab = "Number of apartments", 
+     xlim = c(300,900), breaks = b, 
+     main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices")
+```
+
+```{r hist2}
+prices <- c(379, 425, 450, 450, 499, 529, 535, 535, 545, 599, 665, 675, 699, 699, 725, 725, 745, 799)
+b <- seq(300,900,100)
+hist(prices, col = "lightblue", 
+     las = 1, xlab = "price (in 1000s of $)", 
+     ylab = "Number of apartments", xlim = c(300,900),
+     breaks = b, main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices")
+abline(h = 1:5, col = "black")
+```
+
+```{r rel-freq}
+prices <- c(379, 425, 450, 450, 499, 529, 535, 535, 545, 599, 665, 675, 699, 699, 725, 725, 745, 799)
+b <- seq(300,900,100)
+hist(prices, prob = TRUE, col = "lightblue", 
+     xlab = "price (in 1000s of $)", xlim = c(300,900),
+     ylim = c(0, .003), breaks = b, 
+     main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices", 
+     ylab = "relative frequency", yaxt = "n")
+p <- c(0,.0005, .001, .0015, .002, .0025, .003)
+axis(side = 2, at = p, labels = paste0(10000*p,"%"), 
+     las = 1)
+
+```
+
+```{r dens}
+hist(prices, prob = TRUE, border = "white", 
+     las = 1, xlab = "=", xlim = c(300,900), 
+     breaks = b, main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices",
+     ylab = "")
+lines(density(prices, adjust = 1.5), col = "red", lwd = 2)
+```
+
+```{r hist3}
+prices <- c(379, 425, 450, 450, 499, 529, 535, 535, 545, 599, 665, 675, 699, 699, 725, 725, 745, 799)/100
+hist(prices, col = "lightblue", las = 1, 
+     xlab = "price (in 100,000s of $)", 
+     ylab = "Number of apartments", 
+     main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices")
+```
+
+```{r rel-freq2}
+hist(prices, prob = TRUE, col = "lightblue", 
+     xlab = "price (in 100,000s of $)", 
+     main = "Histogram of Morningside Heights\nOne-Bedroom Apt. Prices", 
+     ylab = "relative frequency",
+     las = 1)
+
+```
+
+```{r summary}
+prices <- prices * 100
+summary (prices)
+```
+
+```{r box}
+boxplot(prices, horizontal = TRUE, frame = FALSE)
+```
+
