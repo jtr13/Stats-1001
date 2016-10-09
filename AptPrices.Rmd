@@ -5,7 +5,8 @@ date: "September 13, 2016"
 ---
 Data source: www.cityrealty.com September 13, 2016  
 Filters: Morningside heights, one bedroom, sales  
-Full dataset stored in aptprices.csv  
+Full dataset stored in aptprices.csv 
+(copied and pasted from the web site and cleaned up)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
